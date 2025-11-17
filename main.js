@@ -27,11 +27,12 @@ document.addEventListener('DOMContentLoaded', () => {
   initHeroVisibility();
   initStatCounters();
   initTestimonialsCarousel();
+  initPracticeAreasCarousel(); // ADDED: Practice areas carousel
   initHeroParallax();
   initConsultationModal();
-  initMobileMenu(); // ADDED: Mobile menu initialization
-  initImageLoadHandling(); // ADDED: Image loading skeleton handling
-  initFormValidation(); // ADDED: Form validation
+  initMobileMenu();
+  initImageLoadHandling();
+  initFormValidation();
 });
 
 // ADDED: Mobile menu functionality
@@ -433,6 +434,98 @@ function initTestimonialsCarousel() {
   }
 
   startAutoplay();
+}
+
+// ADDED: Practice Areas Carousel functionality
+function initPracticeAreasCarousel() {
+  const areaCards = document.querySelectorAll('.area-card');
+  const prevBtn = document.querySelector('[data-area-direction="prev"]');
+  const nextBtn = document.querySelector('[data-area-direction="next"]');
+  const track = document.querySelector('.areas-carousel-track');
+
+  if (!areaCards.length || !track) return;
+
+  let currentIndex = 0;
+  const cardsToShow = getCardsToShow();
+
+  function getCardsToShow() {
+    if (window.innerWidth < 768) return 1;
+    if (window.innerWidth < 992) return 2;
+    if (window.innerWidth < 1200) return 3;
+    return 4;
+  }
+
+  function updateCarousel() {
+    const cardWidth = areaCards[0].offsetWidth;
+    const gap = 32; // 2rem gap
+    const offset = currentIndex * (cardWidth + gap);
+    track.style.transform = `translateX(-${offset}px)`;
+
+    // Update active states
+    areaCards.forEach((card, index) => {
+      if (index >= currentIndex && index < currentIndex + cardsToShow) {
+        card.classList.add('active');
+      } else {
+        card.classList.remove('active');
+      }
+    });
+
+    // Disable buttons at boundaries
+    if (prevBtn && nextBtn) {
+      prevBtn.disabled = currentIndex === 0;
+      nextBtn.disabled = currentIndex >= areaCards.length - cardsToShow;
+      
+      prevBtn.style.opacity = currentIndex === 0 ? '0.5' : '1';
+      nextBtn.style.opacity = currentIndex >= areaCards.length - cardsToShow ? '0.5' : '1';
+    }
+  }
+
+  function nextArea() {
+    if (currentIndex < areaCards.length - cardsToShow) {
+      currentIndex++;
+      updateCarousel();
+    }
+  }
+
+  function prevArea() {
+    if (currentIndex > 0) {
+      currentIndex--;
+      updateCarousel();
+    }
+  }
+
+  if (prevBtn) {
+    prevBtn.addEventListener('click', prevArea);
+  }
+
+  if (nextBtn) {
+    nextBtn.addEventListener('click', nextArea);
+  }
+
+  // Keyboard navigation
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft' && document.activeElement.closest('.practice-areas')) {
+      prevArea();
+    } else if (e.key === 'ArrowRight' && document.activeElement.closest('.practice-areas')) {
+      nextArea();
+    }
+  });
+
+  // Handle window resize
+  let resizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      const newCardsToShow = getCardsToShow();
+      if (newCardsToShow !== cardsToShow) {
+        currentIndex = 0;
+        updateCarousel();
+      }
+    }, 250);
+  });
+
+  // Initialize
+  updateCarousel();
 }
 
 function initHeroParallax() {
