@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Terms of Service - XELOFT</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg-900: #0F151F;
+      --text: #ffffff;
+      --muted-400: #a0aec0;
+      --accent-500: #C0A262;
+      --accent-600: #b8934a;
+      --card: #0b1220;
+      --ease: cubic-bezier(0.215, 0.61, 0.355, 1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg-900);
+      color: var(--text);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    a {
+      text-decoration: none;
+      color: var(--accent-500);
+      transition: color 0.3s ease;
+    }
+
+    a:hover {
+      color: var(--text);
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* Header */
+    .site-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .site-header .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 1.5rem;
+      padding-bottom: 1.5rem;
+      max-width: 1400px;
+    }
+
+   .logo {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.75rem;
+        font-weight: 700;
+        letter-spacing: 1px;
+        color: var(--text);
+    }
+
+    .logo img {
+        height: 60px;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--accent-500);
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+
+    .back-link:hover {
+      transform: translateX(-4px);
+    }
+
+    /* Hero Section */
+    .policy-hero {
+      padding: 8rem 0 4rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .policy-hero::before {
+      content: '';
+      position: absolute;
+      top: -20%;
+      left: -10%;
+      width: 40%;
+      height: 120%;
+      background: radial-gradient(circle at center, var(--accent-500) 0%, rgba(201, 164, 90, 0.3) 100%);
+      border-radius: 50%;
+      opacity: 0.2;
+      filter: blur(60px);
+      z-index: 0;
+    }
+
+    .policy-hero .container {
+      position: relative;
+      z-index: 1;
+    }
+
+    .policy-hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 700;
+      color: var(--accent-500);
+      margin-bottom: 1rem;
+    }
+
+    .policy-meta {
+      color: var(--muted-400);
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+    }
+
+    .policy-intro {
+      font-size: 1.15rem;
+      color: var(--muted-400);
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.8;
+    }
+
+    /* Content Section */
+    .policy-content {
+      padding: 4rem 0 6rem;
+    }
+
+    .policy-section {
+      background: var(--card);
+      padding: 3rem;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.06);
+      margin-bottom: 2rem;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.4s ease;
+    }
+
+    .policy-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 0;
+      background: linear-gradient(180deg, var(--accent-500), var(--accent-600));
+      transition: height 0.4s ease;
+    }
+
+    .policy-section:hover {
+      border-color: rgba(192, 162, 98, 0.2);
+      transform: translateX(4px);
+    }
+
+    .policy-section:hover::before {
+      height: 100%;
+    }
+
+    .section-number {
+      display: inline-block;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: rgba(192, 162, 98, 0.1);
+      color: var(--accent-500);
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+      transition: all 0.4s ease;
+    }
+
+    .policy-section:hover .section-number {
+      background: var(--accent-500);
+      color: var(--bg-900);
+      transform: scale(1.1) rotate(5deg);
+    }
+
+    .policy-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.75rem;
+      color: var(--text);
+      margin-bottom: 1.5rem;
+      font-weight: 600;
+    }
+
+    .policy-section h3 {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.25rem;
+      color: var(--accent-500);
+      margin: 2rem 0 1rem;
+      font-weight: 600;
+    }
+
+    .policy-section p {
+      color: var(--muted-400);
+      margin-bottom: 1.25rem;
+      line-height: 1.8;
+    }
+
+    .policy-section ul {
+      list-style: none;
+      margin: 1.5rem 0;
+      padding-left: 0;
+    }
+
+    .policy-section li {
+      color: var(--muted-400);
+      margin-bottom: 1rem;
+      padding-left: 2rem;
+      position: relative;
+      line-height: 1.7;
+    }
+
+    .policy-section li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.6rem;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent-500);
+    }
+
+    .policy-section strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    /* Contact CTA */
+    .policy-cta {
+      background: linear-gradient(135deg, rgba(192, 162, 98, 0.1), rgba(192, 162, 98, 0.05));
+      padding: 3rem;
+      border-radius: 14px;
+      border: 1px solid rgba(192, 162, 98, 0.2);
+      text-align: center;
+      margin-top: 3rem;
+    }
+
+    .policy-cta h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.75rem;
+      color: var(--text);
+      margin-bottom: 1rem;
+    }
+
+    .policy-cta p {
+      color: var(--muted-400);
+      margin-bottom: 2rem;
+      font-size: 1.05rem;
+    }
+
+    .cta-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 1rem 2.5rem;
+      background: var(--accent-500);
+      color: var(--bg-900);
+      border-radius: 4px;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    .cta-button:hover {
+      background: var(--accent-600);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(192, 162, 98, 0.3);
+      color: var(--bg-900);
+    }
+
+    /* Footer */
+    .simple-footer {
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding: 2rem 0;
+      text-align: center;
+      color: var(--muted-400);
+      font-size: 0.9rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .policy-hero {
+        padding: 6rem 0 3rem;
+      }
+
+      .policy-section {
+        padding: 2rem 1.5rem;
+      }
+
+      .policy-cta {
+        padding: 2rem 1.5rem;
+      }
+
+      .container {
+        padding: 0 1.5rem;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .policy-section {
+        padding: 1.5rem 1rem;
+      }
+
+      .section-number {
+        width: 40px;
+        height: 40px;
+        font-size: 1.25rem;
+      }
+
+      .policy-section h2 {
+        font-size: 1.5rem;
+      }
+
+      .cta-button {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+        <a class="logo" href="/"><img src="logo.png" alt="Zeloft Logo"></a>      
+        <a class="back-link" href="/">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="19" y1="12" x2="5" y2="12"></line>
+          <polyline points="12 19 5 12 12 5"></polyline>
+        </svg>
+        Back to Home
+      </a>
+    </div>
+  </header>
+
+  <section class="policy-hero">
+    <div class="container">
+      <h1>Terms of Service</h1>
+      <p class="policy-meta">Last updated: December 4, 2025</p>
+      <p class="policy-intro">These terms govern your use of XELOFT's services. Please read them carefully before engaging with our platform.</p>
+    </div>
+  </section>
+
+  <section class="policy-content">
+    <div class="container">
+      
+      <div class="policy-section">
+        <div class="section-number">1</div>
+        <h2>Acceptance of Terms</h2>
+        <p>By accessing or using XELOFT's services, you agree to be bound by these Terms of Service and all applicable laws and regulations. If you do not agree with any part of these terms, you may not use our services.</p>
+        
+        <p>These terms constitute a legally binding agreement between you and XELOFT. We reserve the right to modify these terms at any time, and your continued use of our services following any changes indicates your acceptance of the new terms.</p>
+      </div>
+
+      <div class="policy-section">
+        <div class="section-number">2</div>
+        <h2>Services Description</h2>
+        <p>XELOFT provides marketing and business development services specifically designed for law firms and legal professionals. Our services include:</p>
+        
+        <ul>
+          <li><strong>Strategic Consulting:</strong> Brand positioning, messaging development, and market analysis</li>
+          <li><strong>Digital Marketing:</strong> Website development, content creation, and online presence management</li>
+          <li><strong>Client Acquisition:</strong> Lead generation strategies and conversion optimization</li>
+          <li><strong>Educational Resources:</strong> Training, workshops, and industry insights</li>
+        </ul>
+
+        <p>The specific scope of services will be outlined in individual service agreements or proposals.</p>
+      </div>
+
+      <div class="policy-section">
+        <div class="section-number">3</div>
+        <h2>User Responsibilities</h2>
+        <p>As a user of XELOFT's services, you agree to:</p>
+        
+        <ul>
+          <li>Provide accurate, current, and complete information during registration and use</li>
+          <li>Maintain the security and confidentiality of your account credentials</li>
+          <li>Comply with all applicable laws, regulations, and professional ethics rules</li>
+          <li>Use our services only for lawful business purposes</li>
+          <li>Not engage in any activity that interferes with or disrupts our services</li>
+          <li>Not attempt to gain unauthorized access to our systems or networks</li>
+          <li>Respect intellectual property rights and confidential information</li>
+        </ul>
+      </div>
+
+      <div class="policy-section">
+        <div class="section-number">4</div>
+        <h2>Payment Terms</h2>
+        <p>Our payment terms are as follows:</p>
+        
+        <h3>Fees and Billing</h3>
+        <ul>
+          <li>Service fees will be specified in your individual service agreement</li>
+          <li>Payment is due according to the schedule outlined in your agreement</li>
+          <li>We accept payment via credit card, bank transfer, or other agreed-upon methods</li>
+          <li>All fees are in USD unless otherwise specified</li>
+        </ul>
+
+        <h3>Refund Policy</h3>
+        <ul>
+          <li>Refunds are evaluated on a case-by-case basis</li>
+          <li>Services already rendered are not eligible for refund</li>
+          <li>Refund requests must be submitted in writing within 30 days of the disputed charge</li>
+          <li>Processing of approved refunds may take 5-10 business days</li>
+        </ul>
+
+        <h3>Late Payments</h3>
+        <p>Late payments may result in suspension of services and may incur late fees as specified in your service agreement. We reserve the right to charge interest on overdue amounts.</p>
+      </div>
+
+      <div class="policy-section">
+        <div class="section-number">5</div>
+        <h2>Intellectual Property Rights</h2>
+        
+        <h3>Our Intellectual Property</h3>
+        <p>All content, features, and functionality of XELOFT's services, including but not limited to text, graphics, logos, software, and methodologies, are owned by XELOFT and protected by copyright, trademark, and other intellectual property laws.</p>
+
+        <h3>Client Materials</h3>
+        <p>You retain ownership of all materials you provide to us. By engaging our services, you grant us a limited license to use your materials solely for the purpose of delivering our services to you.</p>
+
+        <h3>Work Product</h3>
+        <p>Upon full payment, you will own the final deliverables created specifically for you as outlined in your service agreement. XELOFT retains the right to:</p>
+        <ul>
+          <li>Use general methodologies, processes, and templates</li>
+          <li>Display work in our portfolio (with your permission)</li>
+          <li>Create case studies (with identifying information removed unless authorized)</li>
+        </ul>
+      </div>
+
+      <div class="policy-section">
+        <div class="section-number">6</div>
+        <h2>Confidentiality</h2>
+        <p>We understand the sensitive nature of legal practice and commit to maintaining confidentiality:</p>
+        
+        <ul>
+          <li>All client information and business strategies will be kept confidential</li>
+          <li>We will not disclose confidential information to third parties without your consent</li>
+          <li>Our team members sign confidentiality agreements</li>
+          <li>Confidentiality obligations survive the termination of our agreement</li>
+        </ul>
+
+        <p>Exceptions to confidentiality include information that is publicly available, independently developed, or required to be disclosed by law.</p>
+      </div>
+
+      <div class="policy-section">
+        <div class="section-number">7</div>
+        <h2>Service Limitations and Disclaimers</h2>
+        
+        <h3>No Legal Advice</h3>
+        <p>XELOFT provides marketing and business consulting services. We do not provide legal advice, and our services should not be construed as such. You are responsible for ensuring all marketing materials comply with applicable bar association rules and regulations.</p>
+
+        <h3>Results Disclaimer</h3>
+        <p>While we strive for excellence, we cannot guarantee specific results from our services. Marketing success depends on numerous factors, many of which are beyond our control, including market conditions, competition, and client implementation of our recommendations.</p>
+
+        <h3>Service Availability</h3>
+        <p>We aim to provide uninterrupted service but cannot guarantee our services will be error-free or continuously available. We reserve the right to modify, suspend, or discontinue services with reasonable notice.</p>
+      </div>
+
+      <div class="policy-section">
+        <div class="section-number">8</div>
+        <h2>Limitation of Liability</h2>
+        <p>To the maximum extent permitted by law:</p>
+        
+        <ul>
+          <li>XELOFT's total liability shall not exceed the fees paid by you in the 12 months preceding the claim</li>
+          <li>We are not liable for indirect, incidental, special, consequential, or punitive damages</li>
+          <li>We are not liable for losses resulting from your use or inability to use our services</li>
+          <li>We are not responsible for third-party actions or services</li>
+        </ul>
+
+        <p>Some jurisdictions do not allow limitation of liability, so these limitations may not apply to you.</p>
+      </div>
+
+      <div class="policy-section">
+        <div class="section-number">9</div>
+        <h2>Termination</h2>
+        
+        <h3>By You</h3>
+        <p>You may terminate our services according to the terms specified in your service agreement. Early termination may result in fees for work completed and resources committed.</p>
+
+        <h3>By Us</h3>
+        <p>We reserve the right to terminate or suspend services immediately if you:</p>
+        <ul>
+          <li>Violate these Terms of Service</li>
+          <li>Fail to make required payments</li>
+          <li>Engage in fraudulent or illegal activities</li>
+          <li>Provide false or misleading information</li>
+        </ul>
+
+        <h3>Effect of Termination</h3>
+        <p>Upon termination, you must pay all outstanding fees. We will provide you with all completed work product. Provisions regarding confidentiality, intellectual property, and limitation of liability survive termination.</p>
+      </div>
+
+      <div class="policy-section">
+        <div class="section-number">10</div>
+        <h2>Indemnification</h2>
+        <p>You agree to indemnify, defend, and hold harmless XELOFT and its officers, directors, employees, and agents from any claims, damages, losses, liabilities, and expenses (including legal fees) arising from:</p>
+        
+        <ul>
+          <li>Your use of our services</li>
+          <li>Your violation of these Terms of Service</li>
+          <li>Your violation of any rights of third parties</li>
+          <li>Content or materials you provide to us</li>
+        </ul>
+      </div>
+
+      <div class="policy-section">
+        <div class="section-number">11</div>
+        <h2>Dispute Resolution</h2>
+        
+        <h3>Governing Law</h3>
+        <p>These Terms of Service are governed by the laws of [Your State/Country], without regard to conflict of law provisions.</p>
+
+        <h3>Arbitration</h3>
+        <p>Any disputes arising from these terms or our services will be resolved through binding arbitration, except that either party may seek injunctive relief in court for intellectual property violations.</p>
+
+        <h3>Class Action Waiver</h3>
+        <p>You agree that disputes will be resolved individually and not as part of a class action or collective proceeding.</p>
+      </div>
+
+      <div class="policy-section">
+        <div class="section-number">12</div>
+        <h2>General Provisions</h2>
+        
+        <ul>
+          <li><strong>Entire Agreement:</strong> These terms, along with your service agreement, constitute the entire agreement between you and XELOFT</li>
+          <li><strong>Severability:</strong> If any provision is found unenforceable, the remaining provisions remain in effect</li>
+          <li><strong>Waiver:</strong> Our failure to enforce any right or provision does not constitute a waiver</li>
+          <li><strong>Assignment:</strong> You may not assign your rights without our written consent</li>
+          <li><strong>Force Majeure:</strong> We are not liable for delays or failures due to circumstances beyond our reasonable control</li>
+          <li><strong>Notices:</strong> Official notices must be sent to the addresses specified in your service agreement</li>
+        </ul>
+      </div>
+
+      <div class="policy-cta">
+        <h3>Questions About These Terms?</h3>
+        <p>If you have questions about these Terms of Service, we're happy to clarify anything for you.</p>
+        <a href="mailto:legal@xeloft.com" class="cta-button">
+          Contact Legal Team
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="7" y1="17" x2="17" y2="7"></line>
+            <polyline points="7 7 17 7 17 17"></polyline>
+          </svg>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="simple-footer">
+    <div class="container">
+      <p>&copy; 2025 XELOFT. All rights reserved. | <a href="/privacy-policy.html">Privacy Policy</a></p>
+    </div>
+  </footer>
+</body>
+</html>
