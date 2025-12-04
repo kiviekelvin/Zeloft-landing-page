@@ -1790,6 +1790,26 @@ h3 { font-size: clamp(1.25rem, 3vw, 1.75rem); font-weight: 600; }
   line-height: 1.7;
 }
 
+#closeSuccess {
+  background: var(--accent-500);
+  color: var(--bg-900);
+  padding: 0.75rem 2rem;
+  border: none;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+#closeSuccess:hover {
+  background: var(--accent-600);
+  transform: translateY(-2px);
+}
+
+#closeSuccess:active {
+  transform: translateY(0);
+}
+
 /* ADDED: Better tablet breakpoint for practice tags */
 @media (max-width: 900px) {
   .practice-tags,

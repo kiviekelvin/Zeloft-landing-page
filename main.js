@@ -217,9 +217,11 @@ function initConsultationModal() {
     }
   });
   
-  // Handle form submission validation (let Netlify handle the actual submission)
+  // Handle form submission validation
   if (consultationForm) {
-    consultationForm.addEventListener('submit', (e) => {
+    consultationForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
       // ADDED: Validate all required fields before submission
       const requiredFields = consultationForm.querySelectorAll('[required]');
       let isFormValid = true;
@@ -231,26 +233,39 @@ function initConsultationModal() {
       });
       
       if (!isFormValid) {
-        e.preventDefault();
         return;
       }
       
       const submitButton = consultationForm.querySelector('button[type="submit"]');
+      const originalText = submitButton.textContent;
       
-      // Show loading state - Netlify will handle the submission
+      // Show loading state
       submitButton.disabled = true;
       submitButton.textContent = 'Sending...';
-    });
-    
-    // Handle successful submission redirect
-    if (successMessage) {
-      // This will be triggered after Netlify redirects the page
-      const urlParams = new URLSearchParams(window.location.search);
-      if (urlParams.get('success') === 'true') {
-        consultationForm.style.display = 'none';
-        successMessage.classList.add('active');
+      
+      try {
+        const formData = new FormData(consultationForm);
+        const response = await fetch('/', {
+          method: 'POST',
+          body: formData
+        });
+        
+        if (response.ok) {
+          // Show success message immediately without redirect
+          consultationForm.style.display = 'none';
+          if (successMessage) {
+            successMessage.classList.add('active');
+          }
+        } else {
+          throw new Error('Form submission failed');
+        }
+      } catch (error) {
+        console.error('Form submission error:', error);
+        alert('There was an error submitting the form. Please try again or email us directly at hello@xeloft.com');
+        submitButton.disabled = false;
+        submitButton.textContent = originalText;
       }
-    }
+    });
   }
 }
 
