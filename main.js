@@ -217,11 +217,9 @@ function initConsultationModal() {
     }
   });
   
-  // Handle form submission
+  // Handle form submission validation (let Netlify handle the actual submission)
   if (consultationForm) {
-    consultationForm.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      
+    consultationForm.addEventListener('submit', (e) => {
       // ADDED: Validate all required fields before submission
       const requiredFields = consultationForm.querySelectorAll('[required]');
       let isFormValid = true;
@@ -233,37 +231,26 @@ function initConsultationModal() {
       });
       
       if (!isFormValid) {
+        e.preventDefault();
         return;
       }
       
-      const formData = new FormData(consultationForm);
       const submitButton = consultationForm.querySelector('button[type="submit"]');
-      const originalText = submitButton.textContent;
       
-      // Disable button and show loading state
+      // Show loading state - Netlify will handle the submission
       submitButton.disabled = true;
       submitButton.textContent = 'Sending...';
-      
-      try {
-        const response = await fetch('/', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-          body: new URLSearchParams(formData).toString()
-        });
-        
-        if (response.ok) {
-          // Show success message
-          consultationForm.style.display = 'none';
-          successMessage.classList.add('active');
-        } else {
-          throw new Error('Form submission failed');
-        }
-      } catch (error) {
-        alert('There was an error submitting the form. Please try again or email us directly at hello@xeloft.com');
-        submitButton.disabled = false;
-        submitButton.textContent = originalText;
-      }
     });
+    
+    // Handle successful submission redirect
+    if (successMessage) {
+      // This will be triggered after Netlify redirects the page
+      const urlParams = new URLSearchParams(window.location.search);
+      if (urlParams.get('success') === 'true') {
+        consultationForm.style.display = 'none';
+        successMessage.classList.add('active');
+      }
+    }
   }
 }
 
